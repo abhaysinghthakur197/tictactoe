@@ -2,8 +2,8 @@ import React from 'react';
 import Square from './Square'
 const Board = () => {
     return (
-        <div>
-            <div>
+        <div className="board">
+            <div className="board-row">
                 <Square value={0} />
                 <Square value={1} />
                 <Square value={2} />
@@ -11,7 +11,7 @@ const Board = () => {
 
 
 
-            <div>
+            <div className="board-row">
                 <Square value={3} />
                 <Square value={4} />
                 <Square value={5} />
@@ -19,7 +19,7 @@ const Board = () => {
 
 
 
-            <div>
+            <div className="board-row">
                 <Square value={6} />
                 <Square value={7} />
                 <Square value={8} />
