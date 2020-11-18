@@ -1,33 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Square from './Square'
-const Board = () => {
+const Board = ({ board, handleSquareClick }) => {
 
-    const [board, setboard] = useState(Array(9).fill(null));
+    // yeha se app .js me ja rhe hai kyoki message me kuch print karwana hai!
 
-    const [isNext, setisNext] = useState(false);
-    console.log(board);
+    // const [board, setboard] = useState(Array(9).fill(null));
 
-    const handleSquareClick = (position) => {
+    // const [isNext, setisNext] = useState(false);
+    // console.log('board rerender');
 
-        if (board[position]) {
-            return;
-        }
-        setboard(prev => {
+    // const handleSquareClick = (position) => {
 
-            return prev.map((Square, pos) => {
-                console.log(Square)
-                if (pos === position) {
-                    return isNext ? '1' : '0';
-                }
+    //     if (board[position]) {
+    //         return;
+    //     }
+    //     setboard(prev => {
+
+    //         return prev.map((Square, pos) => {
+    //             console.log(Square)
+    //             if (pos === position) {
+    //                 return isNext ? '1' : '0';
+    //             }
 
 
-                return Square;
-            });
+    //             return Square;
+    //         });
 
-        });
+    //     });
 
-        setisNext(prev => !prev);
-    };
+    //     setisNext(prev => !prev);
+    // };
 
     const renderSquare = (position) => {
         return (

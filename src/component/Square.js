@@ -4,6 +4,8 @@ import React from 'react'
 // we have both option/////
 
 const Square = ({ value, onClick }) => {
+
+    console.log('square rerender')
     return (
 
         <button type="button" className="square" onClick={onClick} >
