@@ -1,6 +1,6 @@
 import React from 'react';
 import Square from './Square'
-const Board = ({ board, handleSquareClick }) => {
+const Board = ({ board, handleSquareClick, winningSquares }) => {
 
     // yeha se app .js me ja rhe hai kyoki message me kuch print karwana hai!
 
@@ -32,10 +32,13 @@ const Board = ({ board, handleSquareClick }) => {
     // };
 
     const renderSquare = (position) => {
+
+        const iswinningSquare = winningSquares.includes(position);
         return (
 
             <Square value={board[position]}
-                onClick={() => handleSquareClick(position)} />
+                onClick={() => handleSquareClick(position)}
+                iswinningSquare={iswinningSquare} />
         )
 
     }

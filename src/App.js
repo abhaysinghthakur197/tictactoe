@@ -9,7 +9,9 @@ import "./styleofall/root.scss";
 
 const App = () => {
 
-  const [History, setHistory] = useState([{ board: Array(9).fill(null), isNext: true },]);
+  const NEW_GAME = [{ board: Array(9).fill(null), isNext: true },]
+
+  const [History, setHistory] = useState(NEW_GAME);
 
   const [currentMove, setcurrentMove] = useState(0);
 
@@ -20,16 +22,17 @@ const App = () => {
   // const [isNext, setisNext] = useState(false);
   // console.log('board rerender');
 
-  const winner = calculateWinner(current.board);
+  const { winner, winningSquares } = calculateWinner(current.board);
 
   // console.log(winner);
 
-  // const messege = winner ? `winner is ${winner}` : `next player is ${current.isNext ? '1' : '0'}`;
   const handleSquareClick = (position) => {
 
     if (current.board[position] || winner) {
       return;
     }
+
+
     setHistory(prev => {
 
       const last = prev[prev.length - 1];
@@ -45,8 +48,16 @@ const App = () => {
         return Square;
       });
 
-      return prev.concat({ board: newBoard, isNext: !last.isNext })
+      return prev.concat({ board: newBoard, isNext: !last.isNext });
     });
+    // const messege = winner ? `winner is ${winner}` : `next player is ${current.isNext ? '1' : '0'}`;
+    // const handleSquareClick = (position) => {
+
+    //   if (current.board[position] || winner) {
+    //     return;
+    //   }
+    // })
+
 
     // setisNext(prev => !prev);
     setcurrentMove(prev => prev + 1);
@@ -56,18 +67,23 @@ const App = () => {
     setcurrentMove(move);
   }
 
+  const NewGame = () => {
+    setHistory(NEW_GAME);
+    setcurrentMove(0);
+  }
 
   return (
     <div className="app">
       <h1>Tic Tac Toe!</h1>
       <StatusMessege winner={winner} current={current} />
       {/* <h2>{messege}</h2> */}
-      <Board board={current.board} handleSquareClick={handleSquareClick} />
-      <Histor history={History} moveTo={moveTo} currentMove={currentMove} />
-      {/* <h1>Tic Tac Toe!</h1> */}
 
+      <Board board={current.board} handleSquareClick={handleSquareClick} winningSquares={winningSquares} />
+      <button type="button" onClick={NewGame}>Restart the Game</button>
+      <Histor history={History} moveTo={moveTo} currentMove={currentMove} />
     </div>
   );
 };
+
 
 export default App;
