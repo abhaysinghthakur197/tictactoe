@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Histor from './component/History';
 import Board from "./component/Board";
+import StatusMessege from './component/StatusMessege';
 import { calculateWinner } from './helper';
 // import { History } from './component/History'
 import "./styleofall/root.scss";
@@ -23,7 +24,7 @@ const App = () => {
 
   // console.log(winner);
 
-  const messege = winner ? `winner is ${winner}` : `next player is ${current.isNext ? '1' : '0'}`;
+  // const messege = winner ? `winner is ${winner}` : `next player is ${current.isNext ? '1' : '0'}`;
   const handleSquareClick = (position) => {
 
     if (current.board[position] || winner) {
@@ -59,7 +60,8 @@ const App = () => {
   return (
     <div className="app">
       <h1>Tic Tac Toe!</h1>
-      <h2>{messege}</h2>
+      <StatusMessege winner={winner} current={current} />
+      {/* <h2>{messege}</h2> */}
       <Board board={current.board} handleSquareClick={handleSquareClick} />
       <Histor history={History} moveTo={moveTo} currentMove={currentMove} />
       {/* <h1>Tic Tac Toe!</h1> */}
