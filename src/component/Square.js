@@ -9,7 +9,8 @@ const Square = ({ value, onClick, iswinningSquare }) => {
     console.log('square rerender')
     return (
 
-        <button type="button" className="square" onClick={onClick} style={{ fontWeight: iswinningSquare ? "bold" : "normal" }}>
+        <button type="button" className={`square ${iswinningSquare ? 'winning' : ''} ${value === '1' ? 'text-green' : 'text-orange'}`} onClick={onClick}
+            style={{ fontWeight: iswinningSquare ? "bold" : "normal" }}>
             { value}</button >
     )
 }
